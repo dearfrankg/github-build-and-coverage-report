@@ -27,7 +27,7 @@ class RepoList extends React.Component {
                 <Flex p={1} justify='space-between' style={rowStyle}>
                   <Box px={1} style={{width: 30}}>{i}</Box>
                   <Box px={1}>
-                    <a href={githubUrl}>{repo.name}</a>
+                    <a href={githubUrl} onClick={e => e.stopPropagation()}>{repo.name}</a>
                   </Box>
                   <Box px={1} flexAuto style={{ textAlign: 'right' }} >
                     <img src={buildBadgeUel} alt=""/>
