@@ -6,9 +6,7 @@ import { create } from 'mobx-persist'
 import github from './store'
 import App from './App'
 
-const hydrate = create({})
-hydrate('github', github)
-.then(() => console.log('github hydrated'))
+create({})('github', github)
 
 render(
   <Provider github={github} >
