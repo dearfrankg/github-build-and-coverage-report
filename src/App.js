@@ -12,9 +12,11 @@ class RepoList extends React.Component {
       <Flex justify='center'>
         <Flex column style={{borderBottom: '1px solid #ddd'}}>
           {github.filteredRepos.map((repo, i) => {
-            const githubUrl = `https://github.com/dearfrankg/${repo.name}`
-            const buildBadgeUel = `https://img.shields.io/travis/dearfrankg/${repo.name}/master.png?style=flat-square`
-            const coverBadgeUrl = `https://img.shields.io/coveralls/dearfrankg/${repo.name}/master.png?style=flat-square`
+            const getGithubUrl = (name) => `https://github.com/dearfrankg/${name}`
+            const getBuildUrl = (name) => `https://travis-ci.org/dearfrankg/${name}`
+            const getCoverageUrl = (name) => `https://coveralls.io/github/dearfrankg/${name}`
+            const getBuildBadgeUrl = (name) => `https://img.shields.io/travis/dearfrankg/${name}/master.png?style=flat-square`
+            const getCoverageBadgeUrl = (name) => `https://img.shields.io/coveralls/dearfrankg/${name}/master.png?style=flat-square`
             const rowStyle = {
               width: 600,
               border: '1px solid #ddd',
@@ -27,13 +29,17 @@ class RepoList extends React.Component {
                 <Flex p={1} justify='space-between' style={rowStyle}>
                   <Box px={1} style={{width: 30}}>{i}</Box>
                   <Box px={1}>
-                    <a href={githubUrl} onClick={e => e.stopPropagation()}>{repo.name}</a>
+                    <a href={getGithubUrl(repo.name)} onClick={e => e.stopPropagation()}>{repo.name}</a>
                   </Box>
                   <Box px={1} flexAuto style={{ textAlign: 'right' }} >
-                    <img src={buildBadgeUel} alt=""/>
+                    <a href={getBuildUrl(repo.name)} onClick={e => e.stopPropagation()}>
+                      <img src={getBuildBadgeUrl(repo.name)} alt=""/>
+                    </a>
                   </Box>
                   <Box px={1} style={{width: 150, textAlign: 'right' }} >
-                    <img src={coverBadgeUrl} alt=""/>
+                    <a href={getCoverageUrl(repo.name)} onClick={e => e.stopPropagation()}>
+                      <img src={getCoverageBadgeUrl(repo.name)} alt=""/>
+                    </a>
                   </Box>
                 </Flex>
               </div>
