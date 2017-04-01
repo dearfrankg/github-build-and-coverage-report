@@ -2,7 +2,10 @@ import { observable, computed } from 'mobx'
 import { persist } from 'mobx-persist'
 
 class Github {
-  static create = () => new Github()
+  static create = () => {
+    const github = new Github()
+    return github
+  }
   static filterList = {
     all: () => true,
     selected: repo => {
@@ -21,6 +24,12 @@ class Github {
   }
   clear = () => {
     this.selectedRepos = []
+  }
+
+  getRepos = () => {
+    const url = 'https://api.github.com/users/dearfrankg/repos?per_page=1000'
+    return fetch(url)
+      .then(res => res.json())
   }
 }
 
