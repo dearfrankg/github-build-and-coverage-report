@@ -21,10 +21,10 @@ export default class Header extends Component {
       <Flex justify='center' column style={{userSelect: 'none', textAlign: 'center'}}>
         <div>
           <h1 >Github Build and Coverage Report</h1>
-          Github Username: <input 
+          Github Username: <input
             value={github.githubUsername}
             onChange={this.handleChange}
-          /> 
+          />
           <div style={{paddingBottom: 30}}></div>
         </div>
       </Flex>

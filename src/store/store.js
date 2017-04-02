@@ -11,15 +11,15 @@ class Github {
       return this.a.selectedRepos.includes(repo.id)
     }
   }
-  
+
   @persist @observable githubUsername = ''
-  
+
   @persist @observable filter = 'all'
-  
+
   @observable repos = []
-  
+
   @persist('list') @observable selectedRepos = []
-  
+
   @computed get filteredRepos () {
     return this.repos.filter(Github.filterList[this.filter])
   }
@@ -29,7 +29,7 @@ class Github {
     var i = this.selectedRepos.indexOf(repoId);
     (i !== -1) ? this.selectedRepos.splice(i, 1) : this.selectedRepos.push(repoId)
   }
-  
+
   clear = () => {
     this.selectedRepos = []
   }
@@ -61,9 +61,9 @@ class Github {
     return {
       githubUrl: `https://github.com/${githubUsername}/${name}`,
       buildUrl: `https://travis-ci.org/${githubUsername}/${name}`,
-      buildBadgeUrl: `https://img.shields.io/travis/${githubUsername}/${name}/master.png?style=flat-square`,
+      buildBadgeUrl: `https://api.travis-ci.org/${githubUsername}/${name}.svg?branch=master`,
       coverageUrl: `https://coveralls.io/github/${githubUsername}/${name}`,
-      coverageBadgeUrl: `https://img.shields.io/coveralls/${githubUsername}/${name}/master.png?style=flat-square`,
+      coverageBadgeUrl: `https://coveralls.io/repos/github/${githubUsername}/${name}/badge.svg?branch=master`,
     }
   }
 }
