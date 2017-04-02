@@ -10,22 +10,22 @@ export default class Header extends Component {
     github: PropTypes.object.isRequired
   }
 
+  handleChange = (e) => {
+    const { github } = this.props
+    github.githubUsername = e.target.value
+  }
+
   render() {
     const { github } = this.props
-    const allStyle = {
-      width: 100,
-      backgroundColor: github.filter === 'all' ? 'lavender' : 'transparent'
-    }
-    const selectedStyle = {
-      width: 100,
-      backgroundColor: github.filter === 'selected' ? 'lavender' : 'transparent'
-    }
-
-
     return (
       <Flex justify='center' column style={{userSelect: 'none', textAlign: 'center'}}>
         <div>
-          <h1 style={{paddingBottom: 30}}>Github Build and Coverage Report</h1>
+          <h1 >Github Build and Coverage Report</h1>
+          Github Username: <input 
+            value={github.githubUsername}
+            onChange={this.handleChange}
+          /> 
+          <div style={{paddingBottom: 30}}></div>
         </div>
       </Flex>
     );

@@ -3,8 +3,8 @@ import {render} from 'react-dom'
 import { Provider } from 'mobx-react'
 import { create } from 'mobx-persist'
 
-import github from './store'
-import App from './App'
+import github from 'src/store'
+import App from 'src/components/App'
 
 create({})('github', github)
 
